@@ -36,37 +36,38 @@ define([
 			this.$backgrounds = {};
 			this.callbacks = {};
 
-			for (var i = 0, l = this._blockModels.length; i < l; i++) {
-				var blockModel = this._blockModels[i];				
-				if(!blockModel.get('_backgroundSwitcher')) continue;
+			if(this._blockModels !=null) {
+				for (var i = 0, l = this._blockModels.length; i < l; i++) {
+					var blockModel = this._blockModels[i];				
+					if(!blockModel.get('_backgroundSwitcher')) continue;
 
-				var id = blockModel.get("_id");
+					var id = blockModel.get("_id");
 
-				if (!this._firstId) this._firstId = id;
+					if (!this._firstId) this._firstId = id;
 
-				var $blockElement = this.$el.find("."+ id);
+					var $blockElement = this.$el.find("."+ id);
 
-				$blockElement.attr("data-backgroundswitcher", id);
-				this.$blockElements[id] = $blockElement;
-				this.callbacks[id] = _.bind(this.onBlockInview, this);
-				this.$blockElements[id].on("onscreen", this.callbacks[id]);
+					$blockElement.attr("data-backgroundswitcher", id);
+					this.$blockElements[id] = $blockElement;
+					this.callbacks[id] = _.bind(this.onBlockInview, this);
+					this.$blockElements[id].on("onscreen", this.callbacks[id]);
 
-				$blockElement.addClass('background-switcher-block');
+					$blockElement.addClass('background-switcher-block');
 
-				var options = blockModel.get('_backgroundSwitcher');
+					var options = blockModel.get('_backgroundSwitcher');
 
-				var $backGround = $('<div class="background-switcher-background" style="background-image: url('+options.src+');"></div>');
-				this.$backgroundContainer.prepend($backGround);
-				this.$backgrounds[id] = $backGround;
+					var $backGround = $('<div class="background-switcher-background" style="background-image: url('+options.src+');"></div>');
+					this.$backgroundContainer.prepend($backGround);
+					this.$backgrounds[id] = $backGround;
 
-				$blockElement.find('.block-inner').addClass('background-switcher-block-mobile').css({'background-image': 'url('+options.mobileSrc+')'});
+					$blockElement.find('.block-inner').addClass('background-switcher-block-mobile').css({'background-image': 'url('+options.mobileSrc+')'});
 
+				}
+
+				this._activeId = this._firstId;
+				
+				this.showBackground();
 			}
-
-			this._activeId = this._firstId;
-			
-			this.showBackground();
-
 		},
 
 		setupBackgroundContainer : function() {
