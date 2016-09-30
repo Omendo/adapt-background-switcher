@@ -1,12 +1,12 @@
 {
     "name": "adapt-background-switcher",
-    "repository": "git://github.com/cgkineo/adapt-background-switcher",
+    "repository": "git://github.com/Omendo/adapt-background-switcher",
     "framework": "^2.0.0",
-    "version": "2.0.3",
-    "homepage": "https://github.com/cgkineo/adapt-background-switcher",
-    "issues": "https://github.com/cgkineo/adapt-background-switcher/issues/",
-    "displayName": "Background Switcher",
-    "extension": "background-switcher",
+    "version": "2.0.4",
+    "homepage": "https://github.com/Omendo/adapt-background-switcher",
+    "issues": "https://github.com/Omendo/adapt-background-switcher/issues/",
+    "displayName": "Background Switcher (Omendo)",
+    "extension": "background-switcher omendo",
     "description": "Switches background image as you move through blocks",
     "main": "/js/adapt-contrib-background-switcher.js",
     "keywords": [
